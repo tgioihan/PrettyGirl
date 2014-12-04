@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="core-release-unspecified">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/PrettyGirl/core-release/unspecified/libs/facebooksdk.jar!/" />
       <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/PrettyGirl/core-release/unspecified/classes.jar!/" />
       <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/PrettyGirl/core-release/unspecified/res" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/PrettyGirl/core-release/unspecified/libs/facebooksdk.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

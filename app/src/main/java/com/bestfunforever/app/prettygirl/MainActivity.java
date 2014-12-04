@@ -34,9 +34,9 @@ public class MainActivity extends MenuActionActivity {
 
     @Override
     protected void initView() {
-        getActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.ab_bg_black));
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.ab_bg_black));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         frameLayout = (FrameLayout) findViewById(R.id.menu_frame);
         mainFragment = new MainFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, mainFragment).commit();
@@ -50,8 +50,8 @@ public class MainActivity extends MenuActionActivity {
             /** Called when a drawer has settled in a completely closed state. */
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
-                getActionBar().setTitle(mainFragment.getTitle());
-                getActionBar().hide();
+                getSupportActionBar().setTitle(mainFragment.getTitle());
+                getSupportActionBar().hide();
                 mainFragment.changepageIfNeed();
             }
 
@@ -202,7 +202,7 @@ public class MainActivity extends MenuActionActivity {
 
 	public void setTitleActionbar(String title) {
 		if (mainFragment != null) {
-			getActionBar().setTitle(title);
+            getSupportActionBar().setTitle(title);
 		}
 	}
 

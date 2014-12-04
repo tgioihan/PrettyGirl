@@ -1,15 +1,12 @@
 package com.bestfunforever.app.prettygirl.fragment;
 
 import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.android.lib.core.fragment.BaseFragment;
 import com.bestfunforever.app.prettygirl.MainActivity;
 import com.bestfunforever.app.prettygirl.R;
 import com.bestfunforever.app.prettygirl.photoview.PhotoView;
@@ -21,7 +18,7 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
 
-public class ImageFragment extends Fragment {
+public class ImageFragment extends BaseFragment {
 
     private ImageLoader imageLoader;
     private DisplayImageOptions options;
@@ -42,12 +39,6 @@ public class ImageFragment extends Fragment {
         this.source = source;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        initImageLoader();
-    }
-
     private void initImageLoader() {
         imageLoader = ImageLoader.getInstance();
         options = new DisplayImageOptions.Builder().cacheInMemory(true)
@@ -55,12 +46,13 @@ public class ImageFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = (View) inflater.inflate(R.layout.image, null);
-        initView(view);
+    protected void preOncreateView() {
+        initImageLoader();
+    }
 
-        loadData();
-        return view;
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.image;
     }
 
     /**
@@ -103,7 +95,7 @@ public class ImageFragment extends Fragment {
         }
     }
 
-    private void initView(View view) {
+    protected void initView(View view) {
         mImageView = (PhotoView) view.findViewById(R.id.img);
         mProgessLayout = (LinearLayout) view.findViewById(R.id.progessll);
         mProgressBar = (ProgressBar) view.findViewById(R.id.progress);
@@ -117,6 +109,11 @@ public class ImageFragment extends Fragment {
             }
         });
 
+    }
+
+    @Override
+    public void initData() {
+        loadData();
     }
 
     public int getPostion() {
