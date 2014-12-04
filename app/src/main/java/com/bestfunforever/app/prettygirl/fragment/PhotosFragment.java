@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.android.lib.core.fragment.BaseFragment;
+import com.android.lib.core.util.DebugLog;
 import com.bestfunforever.app.prettygirl.HackyViewPager;
 import com.bestfunforever.app.prettygirl.MainActivity;
 import com.bestfunforever.app.prettygirl.R;
@@ -99,7 +100,7 @@ public class PhotosFragment extends BaseFragment {
 
 		@Override
 		public Fragment getItem(int arg0) {
-			Log.e("", "getItem " + arg0);
+            DebugLog.d("getItem " + arg0);
 			ImageFragment imageFragment = new ImageFragment();
 			imageFragment.setSource(photos.get(arg0).getSource());
 			imageFragment.setPostion(arg0);
@@ -128,14 +129,14 @@ public class PhotosFragment extends BaseFragment {
 				mViewPager.setAdapter(adapter);
 			} else {
 				if(needChange){
-					Log.e("", "notifidatasetchange need changee create new photos.size() "+photos.size());
+                    DebugLog.d(  "notifidatasetchange need changee create new photos.size() "+photos.size());
 					mViewPager.setAdapter(null);
 					this.photos = photos2;
 					adapter = new PagerAdapter(getActivity().getSupportFragmentManager());
 					mViewPager.setAdapter(adapter);
 					
 				}else{
-					Log.e("", "notifidatasetchange photos.size() "+photos.size());
+                    DebugLog.d(  "notifidatasetchange photos.size() "+photos.size());
 					this.photos = photos2;
 					adapter.notifyDataSetChanged();
 				}

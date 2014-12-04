@@ -19,6 +19,7 @@ import com.android.lib.core.activity.facebook.listener.IActionLikeFacebook;
 import com.android.lib.core.activity.facebook.listener.IPostCommentFacebook;
 import com.android.lib.core.activity.facebook.listener.IUserFaceBookListenner;
 import com.android.lib.core.fragment.BaseFragment;
+import com.android.lib.core.util.DebugLog;
 import com.bestfunforever.app.prettygirl.MainActivity;
 import com.bestfunforever.app.prettygirl.R;
 import com.bestfunforever.app.prettygirl.adapter.CommentAdapter;
@@ -170,7 +171,7 @@ public class CommentFragment extends BaseFragment {
 
             @Override
             public void onClick(View arg0) {
-                Log.e("", "click like fb ");
+                DebugLog.d( "click like fb ");
                 likePhoto();
             }
         });
@@ -179,7 +180,7 @@ public class CommentFragment extends BaseFragment {
 
             @Override
             public void onClick(View arg0) {
-                Log.e("", "click comment fb ");
+                DebugLog.d(  "click comment fb ");
                 ((MainActivity) getActivity()).setPage(1);
             }
         });
@@ -188,7 +189,7 @@ public class CommentFragment extends BaseFragment {
 
             @Override
             public void onClick(View arg0) {
-                Log.e("", "click wallpp fb ");
+                DebugLog.d(  "click wallpp fb ");
                 showMessageConfirmSetWallPapper();
             }
         });
@@ -197,7 +198,7 @@ public class CommentFragment extends BaseFragment {
 
             @Override
             public void onClick(View arg0) {
-                Log.e("", "click share fb ");
+                DebugLog.d(  "click share fb ");
                 ((MainActivity) getActivity()).getFacebookHelper().shareFacebook(getString(R.string.app_name), null, getString(R.string.app_name), null, linkPhoto, source, null, null);
             }
         });
@@ -402,8 +403,8 @@ public class CommentFragment extends BaseFragment {
 		if (graphObject != null) {
 			JSONObject grap = graphObject.getInnerJSONObject();
 			JSONArray array = grap.getJSONArray("data");
-			Log.e("",
-					"comment size " + comments.size() + " data size "
+            DebugLog.d(
+                    "comment size " + comments.size() + " data size "
 							+ array.length());
 			if (array.length() > 0) {
 				for (int i = 0; i < array.length(); i++) {
@@ -440,7 +441,7 @@ public class CommentFragment extends BaseFragment {
 	private void loadUserComment(int size) {
 		if (CommonUtils.checkNetworkAvaliable(getActivity()
 				.getApplicationContext())) {
-			Log.e("", "photo id " + photoId);
+            DebugLog.d(  "photo id " + photoId);
 			String fqlquery = "select name from user where uid IN (";
 			for (int i = commentOffset; i < commentOffset + size; i++) {
 				if (i == commentOffset + size - 1) {
@@ -533,7 +534,7 @@ public class CommentFragment extends BaseFragment {
 	 * load current comment to view
 	 */
 	public void loadCommentToView() {
-		Log.e("", "loadComment " + loadComment);
+        DebugLog.d(  "loadComment " + loadComment);
 		if (loadComment) {
 			loadCommentLL.setVisibility(View.VISIBLE);
 			loadingText.setText(getString(R.string.loading));
@@ -552,7 +553,7 @@ public class CommentFragment extends BaseFragment {
 		loadComment = false;
 		if (CommonUtils.checkNetworkAvaliable(getActivity()
 				.getApplicationContext())) {
-			Log.e("", "photo id " + photoId);
+            DebugLog.d(  "photo id " + photoId);
 			String fqlQuery = "SELECT fromid, text, time, object_id,time,likes FROM comment where object_id='"
 					+ photoId
 					+ "'  order by time desc limit 25 offset "

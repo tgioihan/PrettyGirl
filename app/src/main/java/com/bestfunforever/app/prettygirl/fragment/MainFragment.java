@@ -118,6 +118,7 @@ public class MainFragment extends BaseFragment {
 
         CommentFragment commentFragment = new CommentFragment();
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frame2, commentFragment).commit();
+        Log.d(""   , " initSlideContainer ");
     }
 
     @Override
@@ -519,9 +520,9 @@ public class MainFragment extends BaseFragment {
 
 		@Override
 		public void run() {
-			if (((MainActivity) getActivity()).getActionBar() != null
-					&& ((MainActivity) getActivity()).getActionBar().isShowing()) {
-                ((MainActivity) getActivity()).getActionBar().hide();
+			if (((MainActivity) getActivity()).getSupportActionBar() != null
+					&& ((MainActivity) getActivity()).getSupportActionBar().isShowing()) {
+                ((MainActivity) getActivity()).getSupportActionBar().hide();
 			}
 		}
 	};
@@ -530,11 +531,11 @@ public class MainFragment extends BaseFragment {
 	 * show or hide action using delay time
 	 */
 	public void toogleActionBar() {
-		if (((MainActivity) getActivity()).getActionBar().isShowing()) {
+		if (((MainActivity) getActivity()).getSupportActionBar().isShowing()) {
 			handler.removeCallbacks(hideActionBarRunnaable);
 			handler.postDelayed(hideActionBarRunnaable, 2000);
 		} else {
-            ((MainActivity) getActivity()).getActionBar().show();
+            ((MainActivity) getActivity()).getSupportActionBar().show();
 			handler.postDelayed(hideActionBarRunnaable, 2000);
 		}
 	}

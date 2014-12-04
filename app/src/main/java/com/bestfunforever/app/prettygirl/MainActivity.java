@@ -58,8 +58,8 @@ public class MainActivity extends MenuActionActivity {
             /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                getActionBar().show();
-                getActionBar().setTitle(getString(R.string.app_name));
+                getSupportActionBar().show();
+                getSupportActionBar().setTitle(getString(R.string.app_name));
                 if (mainFragment != null) {
                     mainFragment.setBackCount(0);
                 }
@@ -88,13 +88,13 @@ public class MainActivity extends MenuActionActivity {
         interstitial.setAdListener(new AdListener() {
             @Override
             public void onAdLoaded() {
-                Log.d("", "loadInterstitialAd onAdLoaded");
+                DebugLog.d( "loadInterstitialAd onAdLoaded");
             }
 
             @Override
             public void onAdFailedToLoad(int errorCode) {
                 String message = String.format("onAdFailedToLoad (%s)", getErrorReason(errorCode));
-                Log.d("", "loadInterstitialAd " + message);
+                DebugLog.d( "loadInterstitialAd " + message);
             }
         });
 
@@ -132,7 +132,7 @@ public class MainActivity extends MenuActionActivity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		Log.d("", "menuitem "+item.getItemId());
+        DebugLog.d( "menuitem "+item.getItemId());
 		if(item.getItemId() == R.id.home){
 			mDrawerLayout.openDrawer(frameLayout);
 			return true;
