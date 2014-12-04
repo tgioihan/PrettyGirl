@@ -1,0 +1,27 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/show_menu"
+        android:icon="@drawable/list"
+        android:showAsAction="always"
+        android:title="Menu">
+        <menu>
+            <item
+                android:id="@+id/like"
+                android:icon="@drawable/share_fb"
+                android:showAsAction="always"
+                android:title="@string/likepage"/>
+            <item
+                android:id="@+id/more"
+                android:icon="@drawable/googleplaylogo"
+                android:showAsAction="always"
+                android:title="@string/moreapp"/>
+            <item
+                android:id="@+id/contact"
+                android:icon="@drawable/list"
+                android:showAsAction="always"
+                android:title="@string/contact"/>
+        </menu>
+    </item>
+
+</menu>

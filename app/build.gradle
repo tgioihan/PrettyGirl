@@ -1,0 +1,28 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion '21.0.1'
+
+    defaultConfig {
+        applicationId "com.bestfunforever.app.prettygirl"
+        minSdkVersion 9
+        targetSdkVersion 21
+        versionCode 1
+        versionName '1.0'
+    }
+    buildTypes {
+        release {
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:21.+'
+    compile 'com.google.android.gms:play-services:+'
+    compile 'com.facebook.android:facebook-android-sdk:3.20.0'
+    compile project(':core-release')
+    compile project(':app-release')
+}
